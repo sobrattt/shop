@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('/static/background.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 40px;
+    }
+
+    .search-button {
+      background-color: white;
+      color: #5a3e36; /* коричневый */
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+    }
+
+    .search-button:hover {
+      background-color: #f2f2f2;
+      transform: scale(1.03);
+    }
+
+    .search-button svg {
+      width: 18px;
+      height: 18px;
+      fill: #5a3e36;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 30px;
+      font-size: 36px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5 карточек в ряд */
+      gap: 0;
+      padding: 40px 50px;
+    }
+
+    .product-card {
+      background: #f6f7f8;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      text-decoration: none;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+      background-color: #f6f7f8;
+      display: block;
+    }
+
+    .product-info {
+      padding: 20px;
+      text-align: center;
+      background: #f6f7f8;
+    }
+
+    .product-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 0 10px;
+    }
+
+    .product-price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+
+    .pagination {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 20px;
+    }
+
+    .pagination a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+    }
+
+    .pagination a:hover {
+      text-decoration: underline;
+    }
+
+    .pagination .page-number {
+      margin: 0 20px;
+      color: #333;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="/shop/search" class="search-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M10 2a8 8 0 015.292 13.708l4.707 4.707-1.414 1.414-4.707-4.707A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+      </svg>
+      Search
+    </a>
+  </div>
+
+  <h1>Items</h1>
+
+  <div class="container">
+    {% for item in items %}
+    <a href="{{ item.item_link }}" class="product-card">
+      <img src="{{item.images[0].item_image}}" alt="Product" class="product-image" />
+      <div class="product-info">
+        <div class="product-name">{{item.item_name}}</div>
+        <div class="product-price">{{item.item_price}}</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="pagination">
+    <a href="?page={{ page_number - 1 }}&query={{ query }}">Back</a>
+    <span class="page-number">Page {{ page_number }}</span>
+    <a href="?page={{ page_number + 1 }}&query={{ query }}">Next</a>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+

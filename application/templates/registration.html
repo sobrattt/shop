@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('/static/background.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #6b3e26;
+      margin-bottom: 20px;
+      text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 350px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+      transition: 0.3s border;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #6b3e26;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px 15px;
+      background-color: #6b3e26;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #4b2e1a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Registration page</h1>
+  <form action="/auth/registration" method="post">
+    <label>Login</label>
+    <input type="text" name="username">
+    <label>Password</label>
+    <input type="text" name="password">
+    <input type="submit" value="registration">
+  </form>
+</body>
+</html>
+
+
